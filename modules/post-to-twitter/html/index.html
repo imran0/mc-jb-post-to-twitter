@@ -8,19 +8,26 @@
 </head>
 <body>
 <div class="slds-form slds-m-around--medium">
-    <div class="slds-form-element slds-m-bottom_small">
-        <label class="slds-form-element__label" for="discount-code">Select Label</label>
+    <div class="slds-form-element slds-form-element_stacked slds-m-bottom_small">
+        <label class="slds-form-element__label" for="discount-code">Select Plant Persona</label>
         <div class="slds-form-element__control">
             <div class="slds-select_container">
                 <select class="slds-select" id="discount-code">
-                    <option value="10">10%</option>
-                    <option value="15">15%</option>
-                    <option value="20">20%</option>
-                    <option value="25">25%</option>
+                    <option value="option1">Leo the Plant</option>
+                    <option value="option2">Carl the Cactus</option>
+                    <option value="option3">Dave the Dandelion</option>
                 </select>
             </div>
         </div>
     </div>
+
+    <div class="slds-form-element slds-form-element_stacked">
+        <label class="slds-form-element__label" for="message-body">Write Message</label>
+        <div class="slds-form-element__control">
+          <textarea id="message-body" placeholder="Tweet Body" class="slds-textarea"></textarea>
+        </div>
+    </div>
+
 </div>
 <div id="discount-code-output" class="slds-text-heading_small"></div>
 <div class="slds-docked-form-footer" style="justify-content: flex-end">
