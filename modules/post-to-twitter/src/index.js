@@ -136,7 +136,7 @@ function onMessageChange() {
     // enable or disable the done button when the select option changes
     const msg = document.getElementById('message-body');
 
-    if (msg.length > 0) {
+    if (msg.value.length > 0) {
         document.getElementById('done').removeAttribute('disabled');
     } else {
         document.getElementById('done').setAttribute('disabled', '');
