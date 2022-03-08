@@ -19,7 +19,7 @@ module.exports = function configJSON(req) {
         // See: https://developer.salesforce.com/docs/atlas.en-us.mc-apis.meta/mc-apis/how-data-binding-works.htm
         inArguments: [
           {
-            discount: 10
+            messageBody: ''
           }
         ],
         outArguments: [],
@@ -57,19 +57,16 @@ module.exports = function configJSON(req) {
     schema: {
       arguments: {
         execute: {
-          inArguments: [],
-          outArguments: [{
-            discountCode: {
-              dataType: 'Text',
-              direction: 'out',
-              access: 'visible'
-            },
-            discount: {
-              dataType: 'Number',
-              direction: 'out',
-              access: 'visible'
+          inArguments: [
+            {
+              messageBody: {
+                dataType: 'Text',
+                direction: 'in',
+                access: 'visible'
+              }
             }
-          }]
+          ],
+          outArguments: []
         }
       }
     }

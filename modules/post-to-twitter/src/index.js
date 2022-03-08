@@ -91,15 +91,15 @@ function onDoneButtonClick() {
     activity.metaData.isConfigured = true;
 
     // get the option that the user selected and save it to
-    const select = document.getElementById('discount-code');
+    const select = document.getElementById('message-body');
     const option = select.options[select.selectedIndex];
 
     activity.arguments.execute.inArguments = [{
-        discount: option.value,
+        messageBody: option.value,
     }];
 
     // you can set the name that appears below the activity with the name property
-    activity.name = `Issue ${activity.arguments.execute.inArguments[0].discount}% Code`;
+    activity.name = `Post tweet`;
 
     console.log('------------ triggering:updateActivity({obj}) ----------------');
     console.log('Sending message back to updateActivity');
@@ -132,6 +132,20 @@ function onDiscountCodeSelectChange() {
     connection.trigger('setActivityDirtyState', true);
 }
 
+function onMessageChange() {
+    // enable or disable the done button when the select option changes
+    const msg = document.getElementById('message-body');
+
+    if (msg.length > 0) {
+        document.getElementById('done').removeAttribute('disabled');
+    } else {
+        document.getElementById('done').setAttribute('disabled', '');
+    }
+
+    // let journey builder know the activity has changes
+    connection.trigger('setActivityDirtyState', true);
+}
+
 function selectDiscountCodeOption(value) {
     const select = document.getElementById('discount-code');
     const selectOption = select.querySelector(`[value='${value}']`);
@@ -148,7 +162,7 @@ function setupEventHandlers() {
     // Listen to events on the form
     document.getElementById('done').addEventListener('click', onDoneButtonClick);
     document.getElementById('cancel').addEventListener('click', onCancelButtonClick);
-    document.getElementById('discount-code').addEventListener('change', onDiscountCodeSelectChange);
+    document.getElementById('message-body').addEventListener('change', onMessageChange);
 }
 
 // this function is for example purposes only. it sets ups a Postmonger
