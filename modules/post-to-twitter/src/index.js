@@ -91,11 +91,10 @@ function onDoneButtonClick() {
     activity.metaData.isConfigured = true;
 
     // get the option that the user selected and save it to
-    const select = document.getElementById('message-body');
-    const option = select.options[select.selectedIndex];
+    const msg = document.getElementById('message-body');
 
     activity.arguments.execute.inArguments = [{
-        messageBody: option.value,
+        messageBody: msg.value,
     }];
 
     // you can set the name that appears below the activity with the name property
