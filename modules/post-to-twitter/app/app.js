@@ -98,8 +98,8 @@ module.exports = function discountCodeExample(app, options) {
     app.post('/modules/post-to-twitter/validate', function(req, res) {
         console.log('debug: /modules/post-to-twitter/validate');
         client.post(
-            'statuses/update',
-            {status: 'Posting via the API is awesome! (via validate)'},
+            '/2/tweets',
+            {text: 'Posting via the API is awesome! (via validate)'},
             function (error, tweet, response) {
               if (error) throw error;
               console.log(tweet); // Tweet body.
