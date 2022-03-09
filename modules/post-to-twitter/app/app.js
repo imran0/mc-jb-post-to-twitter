@@ -19,8 +19,7 @@ const Twitter = require('twitter');
 const client = new Twitter({
   consumer_key: 'P7Qph99uv4FqsOGGFhTmzoEVO',
   consumer_secret: 'aMpa4nPlhAMEsjlCiED7pVnbql0L827xQGMjC0Yp65dyQc4L7j',
-  access_token_key: '1499766115160899585-QbeUduDA4zez7R7w2w6y1bOZ9VyHpr',
-  access_token_secret: 'SNXb20vXYQn5Wak81b90zzlJvNY4ZlhO8NZUYHtXxB5wH',
+  bearer_token: 'AAAAAAAAAAAAAAAAAAAAAJN1ZwEAAAAA8x7UDk2NTtXVbhdHSNJvt%2FAC83I%3D4e39OepyBxwdsODJi9v4OrkFbF0FOiGsZZHH2109ZI8Jc3Nv0T',
 });
 
 // setup the discount-code example app
