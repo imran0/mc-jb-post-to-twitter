@@ -40,6 +40,9 @@ module.exports = function discountCodeExample(app, options) {
     app.get('/modules/post-to-twitter/index.html', function(req, res) {
         // you can use your favorite templating library to generate your html file.
         // this example keeps things simple and just returns a static file
+        
+        console.log(req.inArguments[0]);
+        
         return res.sendFile(`${moduleDirectory}/html/index.html`);
     });
 
