@@ -19,8 +19,8 @@ const {TwitterApi} = require('twitter-api-v2');
 const client = new TwitterApi({
     appKey: 'P7Qph99uv4FqsOGGFhTmzoEVO',
     appSecret: 'aMpa4nPlhAMEsjlCiED7pVnbql0L827xQGMjC0Yp65dyQc4L7j',
-    accessToken: '1499766115160899585-QbeUduDA4zez7R7w2w6y1bOZ9VyHpr',
-    accessSecret: 'SNXb20vXYQn5Wak81b90zzlJvNY4ZlhO8NZUYHtXxB5wH',
+    accessToken: '1499766115160899585-vTm4V8tXGB7F2aEYmaoMrA8BFWCFn4',
+    accessSecret: 'X8jMjZsE1FrlDajvLPxGMzIFEkoJJIHWq5R416Scu0at9',
 });
 
 // setup the discount-code example app
