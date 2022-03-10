@@ -14,15 +14,14 @@
 const express = require('express');
 const configJSON = require('../config/config-json');
 
-const Twitter = require('twitter-v2');
+const {TwitterApi} = require('twitter-api-v2');
 
-const client = new Twitter({
-    consumer_key: 'P7Qph99uv4FqsOGGFhTmzoEVO',
-    consumer_secret: 'aMpa4nPlhAMEsjlCiED7pVnbql0L827xQGMjC0Yp65dyQc4L7j',
-    // access_token_key: '1499766115160899585-QbeUduDA4zez7R7w2w6y1bOZ9VyHpr',
-    // access_token_secret: 'SNXb20vXYQn5Wak81b90zzlJvNY4ZlhO8NZUYHtXxB5wH',
+const client = new TwitterApi({
+    appKey: 'P7Qph99uv4FqsOGGFhTmzoEVO',
+    appSecret: 'aMpa4nPlhAMEsjlCiED7pVnbql0L827xQGMjC0Yp65dyQc4L7j',
+    accessToken: '1499766115160899585-QbeUduDA4zez7R7w2w6y1bOZ9VyHpr',
+    accessSecret: 'SNXb20vXYQn5Wak81b90zzlJvNY4ZlhO8NZUYHtXxB5wH',
 });
-
 
 // setup the discount-code example app
 module.exports = function discountCodeExample(app, options) {
@@ -98,15 +97,12 @@ module.exports = function discountCodeExample(app, options) {
      */
     app.post('/modules/post-to-twitter/validate', function(req, res) {
         console.log('debug: /modules/post-to-twitter/validate');
-        client.post(
-            'statuses/update',
-            {status: 'Posting via the API is awesome! (via validate)'},
-            function (error, tweet, response) {
-              if (error) throw error;
-              console.log(tweet); // Tweet body.
-              console.log(response); // Raw response object.
-            }
-          );
+        client.v1.tweet('This tweet was written by a bot').then((val) => {
+            console.log(val)
+            console.log("success")
+        }).catch((err) => {
+            console.log(err)
+        })
         return res.status(200).json({});
     });
 
