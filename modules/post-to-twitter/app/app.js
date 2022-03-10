@@ -41,7 +41,7 @@ module.exports = function discountCodeExample(app, options) {
         // you can use your favorite templating library to generate your html file.
         // this example keeps things simple and just returns a static file
         
-        console.log(req.inArguments[0]);
+        console.log(req);
         
         return res.sendFile(`${moduleDirectory}/html/index.html`);
     });
