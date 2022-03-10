@@ -17,10 +17,10 @@ const configJSON = require('../config/config-json');
 const {TwitterApi} = require('twitter-api-v2');
 
 const client = new TwitterApi({
-    appKey: 'P7Qph99uv4FqsOGGFhTmzoEVO',
-    appSecret: 'aMpa4nPlhAMEsjlCiED7pVnbql0L827xQGMjC0Yp65dyQc4L7j',
-    accessToken: '1499766115160899585-vTm4V8tXGB7F2aEYmaoMrA8BFWCFn4',
-    accessSecret: 'X8jMjZsE1FrlDajvLPxGMzIFEkoJJIHWq5R416Scu0at9',
+    appKey: process.env.appKey,
+    appSecret: process.env.appSecret,
+    accessToken: process.env.accessToken,
+    accessSecret: process.env.accessSecret,
 });
 
 // setup the discount-code example app
@@ -97,12 +97,6 @@ module.exports = function discountCodeExample(app, options) {
      */
     app.post('/modules/post-to-twitter/validate', function(req, res) {
         console.log('debug: /modules/post-to-twitter/validate');
-        client.v1.tweet('This tweet was written by a bot').then((val) => {
-            console.log(val)
-            console.log("success")
-        }).catch((err) => {
-            console.log(err)
-        })
         return res.status(200).json({});
     });
 
@@ -180,15 +174,13 @@ module.exports = function discountCodeExample(app, options) {
 
         console.log('Response Object', JSON.stringify(responseObject));
 
-        client.post(
-            'statuses/update',
-            {status: 'Posting via the API is awesome!'},
-            function (error, tweet, response) {
-              if (error) throw error;
-              console.log(tweet); // Tweet body.
-              console.log(response); // Raw response object.
-            }
-          );
+        const messageBodyInArgument = getInArgument('messageBody') || 'nothing';
+        client.v1.tweet(messageBodyInArgument).then((val) => {
+            console.log(val)
+            console.log("success")
+        }).catch((err) => {
+            console.log(err)
+        })
 
         return res.status(200).json(responseObject);
     });
