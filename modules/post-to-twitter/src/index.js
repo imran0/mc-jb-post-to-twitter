@@ -71,14 +71,14 @@ function onInitActivity(payload) {
     // check if this activity has an incoming argument.
     // this would be set on the server side when the activity executes
     // (take a look at execute() in ./discountCode/app.js to see where that happens)
-    // const discountArgument = inArguments.find((arg) => arg.discount);
+    const messageBodyArg = inArguments.find((arg) => arg.messageBody);
 
-    // console.log('Discount Argument', discountArgument);
+    console.log('Message Body:', messageBodyArg);
 
     // if a discountCode back argument was set, show the message in the view.
-    // if (discountArgument) {
-    //     selectDiscountCodeOption(discountArgument.discount);
-    // }
+    if (messageBodyArg) {
+        setSavedMessageBody(messageBodyArg.messageBody);
+    }
 
     // if the discountCode back argument doesn't exist the user can pick
     // a discountCode message from the drop down list. the discountCode back arg
@@ -155,6 +155,11 @@ function selectDiscountCodeOption(value) {
     } else {
         console.log('Could not select value from list', `[value='${value}]'`);
     }
+}
+
+function setSavedMessageBody(value) {
+    const msgBody = document.getElementById('message-body');
+    msgBody.value = value;
 }
 
 function setupEventHandlers() {
