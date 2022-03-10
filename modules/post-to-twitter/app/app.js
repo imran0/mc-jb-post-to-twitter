@@ -14,14 +14,15 @@
 const express = require('express');
 const configJSON = require('../config/config-json');
 
-const Twitter = require('twitter');
+const Twitter = require('twitter-v2');
 
 const client = new Twitter({
-  consumer_key: 'P7Qph99uv4FqsOGGFhTmzoEVO',
-  consumer_secret: 'aMpa4nPlhAMEsjlCiED7pVnbql0L827xQGMjC0Yp65dyQc4L7j',
-  access_token_key: '1499766115160899585-QbeUduDA4zez7R7w2w6y1bOZ9VyHpr',
-  access_token_secret: 'SNXb20vXYQn5Wak81b90zzlJvNY4ZlhO8NZUYHtXxB5wH',
+    consumer_key: 'P7Qph99uv4FqsOGGFhTmzoEVO',
+    consumer_secret: 'aMpa4nPlhAMEsjlCiED7pVnbql0L827xQGMjC0Yp65dyQc4L7j',
+    // access_token_key: '1499766115160899585-QbeUduDA4zez7R7w2w6y1bOZ9VyHpr',
+    // access_token_secret: 'SNXb20vXYQn5Wak81b90zzlJvNY4ZlhO8NZUYHtXxB5wH',
 });
+
 
 // setup the discount-code example app
 module.exports = function discountCodeExample(app, options) {
