@@ -15,6 +15,27 @@ const express = require('express');
 const configJSON = require('../config/config-json');
 
 const {TwitterApi} = require('twitter-api-v2');
+const SDK = require('sfmc-sdk');
+const sfmc = new SDK(
+    {
+        client_id: process.env.mcapiClientId,
+        client_secret: process.env.mcapiClientSecret,
+        auth_url: process.env.mcapiAuthUrl,
+        account_id: process.env.mcapiAccountId,
+    },
+    {
+        eventHandlers: {
+            onLoop: (type, accumulator) => console.log('Looping', type, accumlator.length),
+            onRefresh: (options) => console.log('RefreshingToken.', Options),
+            logRequest: (req) => console.log(req),
+            logResponse: (res) => console.log(res),
+            onConnectionError: (ex, remainingAttempts) => console.log(ex.code, remainingAttempts)
+
+        },
+        requestAttempts : 1,
+        retryOnConnectionError: true
+    }
+);
 
 const client = new TwitterApi({
     appKey: process.env.appKey,
