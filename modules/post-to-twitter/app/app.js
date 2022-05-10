@@ -36,6 +36,7 @@ const sfmc = new SDK(
         retryOnConnectionError: true
     }
 );
+const scopes = sfmc.auth.getSupportedScopes();
 
 const client = new TwitterApi({
     appKey: process.env.appKey,
@@ -62,6 +63,8 @@ module.exports = function discountCodeExample(app, options) {
         // you can use your favorite templating library to generate your html file.
         // this example keeps things simple and just returns a static file
         
+        console.log('loaded index.page');
+        console.log(scopes);
         return res.sendFile(`${moduleDirectory}/html/index.html`);
     });
 
