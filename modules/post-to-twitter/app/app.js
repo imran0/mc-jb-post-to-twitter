@@ -65,6 +65,8 @@ module.exports = function discountCodeExample(app, options) {
         
         console.log('loaded index.page');
         console.log(scopes);
+        alert('loaded index.page');
+        alert(scopes);
         return res.sendFile(`${moduleDirectory}/html/index.html`);
     });
 
