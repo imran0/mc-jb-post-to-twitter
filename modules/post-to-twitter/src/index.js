@@ -43,6 +43,8 @@ document.addEventListener('DOMContentLoaded', function main() {
 
     // Tell the parent iFrame that we are ready.
     connection.trigger('ready');
+
+    console.log('debug 1');
 });
 
 // this function is triggered by Journey Builder via Postmonger.
@@ -52,6 +54,7 @@ function onInitActivity(payload) {
     // set the activity object from this payload. We'll refer to this object as we
     // modify it before saving.
     activity = payload;
+    console.log('debug 2');
 
     const hasInArguments = Boolean(
         activity.arguments &&
